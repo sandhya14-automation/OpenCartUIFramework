@@ -12,8 +12,8 @@ pipeline
         {
             steps
             {
-                 git 'https://github.com/jglick/simple-maven-project-with-tests.git'
-                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
+                 git 'https://github.com/jglick/simple-maven-project-with-tests.git' //Dev code
+                 sh "mvn -Dmaven.test.failure.ignore=true clean package" //sh - shell
             }
             post 
             {
@@ -40,6 +40,7 @@ pipeline
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     git 'https://github.com/naveenanimation20/March2025POMDesign.git'
+                    //git 'https://github.com/sandhya14-automation/OpenCartUIFramework.git'
                     sh "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_regression.xml -Denv=qa"
                     
                 }
